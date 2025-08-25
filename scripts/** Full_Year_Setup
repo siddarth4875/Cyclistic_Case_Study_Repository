@@ -1,1 +1,94 @@
 
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_FULL_YEAR` AS
+
+SELECT 
+ride_id,
+rideable_type,
+started_at,
+ended_at,
+start_station_name,
+start_station_id,
+end_station_name,
+end_station_id,
+start_lat,
+start_lng,
+end_lat,
+end_lng,
+member_casual,
+ride_length,
+ride_year,
+start_time,
+end_time,
+day_of_week,
+quater,
+ride_length_interval
+ FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1` 
+ UNION DISTINCT
+ SELECT 
+ride_id,
+rideable_type,
+started_at,
+ended_at,
+start_station_name,
+start_station_id,
+end_station_name,
+end_station_id,
+start_lat,
+start_lng,
+end_lat,
+end_lng,
+member_casual,
+ride_length,
+ride_year,
+start_time,
+end_time,
+day_of_week,
+quater,
+ride_length_interval
+ FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2` 
+ UNION DISTINCT
+ SELECT 
+ride_id,
+rideable_type,
+started_at,
+ended_at,
+start_station_name,
+start_station_id,
+end_station_name,
+end_station_id,
+start_lat,
+start_lng,
+end_lat,
+end_lng,
+member_casual,
+ride_length,
+ride_year,
+start_time,
+end_time,
+day_of_week,
+quater,
+ride_length_interval
+ FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3` 
+ UNION DISTINCT
+ SELECT 
+ride_id,
+rideable_type,
+started_at,
+ended_at,
+start_station_name,
+start_station_id,
+end_station_name,
+end_station_id,
+start_lat,
+start_lng,
+end_lat,
+end_lng,
+member_casual,
+ride_length,
+ride_year,
+start_time,
+end_time,
+day_of_week,
+quater,
+ride_length_interval
+ FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4` 
