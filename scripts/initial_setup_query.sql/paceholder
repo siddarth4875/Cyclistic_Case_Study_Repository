@@ -1,1 +1,482 @@
+/*
+Cyclistic Case Study: Initial Setup Query
+Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+*/
+ -- Combine the distinct ride count results into one temporary table:
+ WITH Combine_Results AS (     
+  SELECT 
+  '202201' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202201` 
+  UNION DISTINCT
+  SELECT
+  '202202' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202202`UNION DISTINCT
+  SELECT
+  '202203' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202203`UNION DISTINCT
+  SELECT
+  '202204' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202204`
+  UNION DISTINCT
+  SELECT
+  '202205' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202205`
+  UNION DISTINCT
+  SELECT
+  '202206' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202206`
+  UNION DISTINCT
+  SELECT
+  '202207' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202207`
+  UNION DISTINCT
+  SELECT
+  '202208' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202208`
+  UNION DISTINCT
+  SELECT
+  '202209' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202209`
+  UNION DISTINCT
+  SELECT
+  '202210' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202210`
+  UNION DISTINCT
+  SELECT
+  '202211' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202211`
+  UNION DISTINCT
+  SELECT
+  '202212' AS period,
+  COUNT(DISTINCT ride_id) AS Ride_total
+  FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202212`
+ )
+ SELECT * FROM Combine_Results
+ ORDER BY Ride_total DESC;
 
+ -- We'll create four quarterly tables for analysis:
+ -- Table 1) 2022_Q1 -> JAN(01), FEB(02), MAR(03)
+ -- Table 2) 2022_Q2 -> APR(04), MAY(05), JUN(06)
+ -- Table 3) 2022_Q3 -> JUL(07), AUG(08), SEP(09)
+ -- Table 4) 2022_Q4 -> OCT(10), NOV(11), DEC(12)
+ 
+CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1 AS
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202201`
+UNION DISTINCT
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202202`
+UNION DISTINCT
+SELECT 
+         ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202203`
+
+CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2 AS
+SELECT
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q2' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202204`
+UNION DISTINCT
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q2' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202205`
+UNION DISTINCT
+SELECT 
+         ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q2' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202206`
+
+CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3 AS
+SELECT
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q3' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202207`
+UNION DISTINCT
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q3' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202208`
+UNION DISTINCT
+SELECT 
+         ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q3' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202209`
+
+CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4 AS
+SELECT
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q4' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202210`
+UNION DISTINCT
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q4' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202211`
+UNION DISTINCT
+SELECT 
+         ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        day_of_week,
+	'Q4' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202212`
+
+ -- Start with 2022_Q1 and repeat for other THREE tables
+ -- Update 'day_of_week' format with CAST() 
+
+ CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1_new AS
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        CAST(day_of_week AS STRING) day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202201`
+
+ CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2_new AS
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        CAST(day_of_week AS STRING) day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202202`
+
+ CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3_new AS
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        CAST(day_of_week AS STRING) day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202203`
+
+ CREATE TABLE cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4_new AS
+SELECT 
+        ride_id, 
+        rideable_type, 
+        started_at, 
+        ended_at, 
+	   start_station_name, 
+	   start_station_id, 
+        end_station_name, 
+	   end_station_id, 
+        start_lat, 
+        start_lng, 
+	   end_lat, 
+        end_lng, 
+        member_casual,
+        ride_length,
+        ride_year,
+        start_time,
+        end_time,
+        CAST(day_of_week AS STRING) day_of_week,
+	'Q1' AS quarter
+FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_202204`
+
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1`
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1` AS
+SELECT * FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1_new`
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1_new`
+
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1`
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1` AS
+SELECT * FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1_new`
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1_new`
+
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2`
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2` AS
+SELECT * FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2_new`
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q2_new`
+
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3`
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3` AS
+SELECT * FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3_new`
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q3_new`
+
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4`
+CREATE TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4` AS
+SELECT * FROM `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4_new`
+DROP TABLE `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q4_new`
+
+
+
+ -- Update 'day_of_week' values in Q1, Q2, Q3, Q4.
+ -- Start with 2022_Q1 and repeat for other three tables
+ -- Update 'day_of_week' values with CASE statements
+
+UPDATE 
+   `cyclistic-bikeshare-11.cyclistic_202201.trips_2022_Q1`
+SET  
+        day_of_week = 
+            CASE
+                WHEN day_of_week = '1' THEN 'Sunday'
+                WHEN day_of_week = '2' THEN 'Monday'
+                WHEN day_of_week = '3' THEN 'Tuesday'
+                WHEN day_of_week = '4' THEN 'Wednesday'
+                WHEN day_of_week = '5' THEN 'Thursday'
+                WHEN day_of_week = '6' THEN 'Friday'
+                WHEN day_of_week = '7' THEN 'Saturday' 
+            END
+WHERE
+        day_of_week IN ('1', '2', '3', '4', '5', '6', '7')
