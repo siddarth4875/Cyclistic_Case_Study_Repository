@@ -5,21 +5,28 @@ This project was completed as part of a data analytics portfolio, using spreadsh
 Table of Contents
 
 Project Overview
+
 Business Problem
+
 Data Sources
+
 Tools and Technologies
+
 Data Cleaning and Preparation
 
-Using Microsoft Excel
-Using SQL in BigQuery
+  Using Microsoft Excel
+  Using SQL in BigQuery
 
 
 Exploratory Data Analysis
 
 Quarterly Analysis
+
 Full-Year Analysis
 
 
 Key Findings and Insights
+
 Visualizations and Dashboard
+
 Recommendations
