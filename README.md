@@ -9,11 +9,17 @@ Business Problem
 Data Sources
 Tools and Technologies
 Data Cleaning and Preparation
+
 Using Microsoft Excel
 Using SQL in BigQuery
+
+
 Exploratory Data Analysis
+
 Quarterly Analysis
 Full-Year Analysis
+
+
 Key Findings and Insights
 Visualizations and Dashboard
 Recommendations
