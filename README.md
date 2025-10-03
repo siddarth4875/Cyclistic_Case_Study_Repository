@@ -7,7 +7,7 @@ Analyze usage trends and rider behavior of the Cyclistic Bike-Share program to s
 ## 👩‍💻 Tech Stack
 * **Data Preparation:** Excel
 * **Data Analysis:** SQL
-* **Data Visualization:** Power BI
+* **Data Visualization:** Tableau
 * **Data Transformation:** Power Query
 * **Data Modeling:** DAX Calculations
 
